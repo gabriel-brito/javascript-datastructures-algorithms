@@ -1,4 +1,5 @@
 // A Stack is an ordered collection of items that follows the last in, first out (LIFO) principle.
+// All methods from Stack (Array) data structure will be O(n)
 
 class Stack {
   constructor() {
