@@ -81,3 +81,59 @@ stack.pop();
 console.log(stack.size()); //2
 
 console.log(stack.toString()); // "5, 8"
+
+// Solving real life problems with Stacks.
+
+// Converting decimal numbers to binary.
+
+function decimalToBinary(decimalNumber) {
+  const remainderStack = new Stack();
+  let number = decimalNumber;
+  let remainder = 0;
+  let binaryString = "";
+
+  while (number > 0) {
+    remainder = Math.floor(number % 2);
+    remainderStack.push(remainder);
+    number = Math.floor(number / 2);
+  }
+
+  while (!remainderStack.isEmpty()) {
+    binaryString += remainderStack.pop().toString();
+  }
+
+  return binaryString;
+}
+
+console.log(decimalToBinary(233)); // 11101001
+console.log(decimalToBinary(10)); // 1010
+console.log(decimalToBinary(1000)); // 1111101000
+
+// The base converter algorithm
+
+function baseConverter(decimalNumber, base) {
+  const remainderStack = new Stack();
+  const digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let number = decimalNumber;
+  let remainder = 0;
+  let baseString = "";
+
+  if (!(base >= 2 && base <= 36)) return "";
+
+  while (number > 0) {
+    remainder = Math.floor(number % base);
+    remainderStack.push(remainder);
+    number = Math.floor(number / base);
+  }
+
+  while (!remainderStack.isEmpty()) {
+    baseString += digits[remainderStack.pop()];
+  }
+
+  return baseString;
+}
+
+console.log(baseConverter(100345, 2)); // 11000011111111001
+console.log(baseConverter(100345, 8)); // 303771
+console.log(baseConverter(100345, 16)); // 187F9
+console.log(baseConverter(100345, 35)); // 2Bw0
