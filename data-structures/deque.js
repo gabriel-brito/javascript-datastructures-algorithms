@@ -22,10 +22,11 @@ class Deque {
       for (let i = this.count; i > 0; i--) {
         this.items[i] = this.items[i - 1];
       }
+
+      this.count++;
+      this.lowestCount = 0;
     }
 
-    this.count++;
-    this.lowestCount = 0;
     this.items[0] = element;
   }
 
