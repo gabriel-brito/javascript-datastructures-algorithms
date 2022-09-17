@@ -38,6 +38,18 @@ class HashTable {
 
     return undefined;
   } // O(N)
+
+  keys() {
+    const keysArray = [];
+
+    for (let i = 0; i < this.data.length; i++) {
+      if (this.data[i]) {
+        keysArray.push(this.data[i][0][0]); // { You're looping through a massive array (well, it can be), then you're inside the index of this array, and you have another array. So, you need to pick the first index, which is the key, so Array[i][0][0] }
+      }
+    }
+
+    return keysArray;
+  }
 }
 
 const myHashTable = new HashTable(50);
