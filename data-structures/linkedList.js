@@ -57,7 +57,7 @@ class LinkedList {
 
   getElementAt(index) {
     if (index >= 0 && index < this.count) {
-      let current = ths.head;
+      let current = this.head;
 
       for (let i = 0; i < index && current != null; i++) {
         current = current.next;
@@ -133,5 +133,91 @@ class LinkedList {
     }
 
     return objString;
+  }
+}
+
+// ------------------------------------------------------------------------
+
+class DoublyNode extends Node {
+  constructor(element, next, prev) {
+    super(element, next);
+    this.prev = prev;
+  }
+}
+
+class DoublyLinkedList extends LinkedList {
+  constructor(equalsFn = defaultEquals) {
+    super(equalsFn);
+
+    this.tail = undefined;
+  }
+
+  insert(element, index) {
+    if ((index) => 0 && index <= this.count) {
+      const node = new DoublyNode(element);
+      let current = this.head;
+
+      if (index === 0) {
+        if (this.head === null) {
+          // New
+          this.head = node;
+          this.tail = node;
+        } else {
+          node.next = this.head;
+          current.prev = node; // New
+          this.head = node;
+        }
+      } else if (index === this.count) {
+        // last item New
+        current = this.tail;
+        current.next = node;
+        node.prev = current;
+        this.tail = node;
+      } else {
+        const previous = this.getElementAt(index - 1);
+        current = previous.next;
+        node.next = current;
+        previous.next = node;
+        current.prev = node; // New
+        node.prev = previous; // New
+      }
+
+      this.count++;
+
+      return true;
+    }
+
+    return false;
+  }
+
+  removingAt(index) {
+    if ((index) => 0 && index <= this.count) {
+      let current = this.head;
+
+      if (index === 0) {
+        this.head = current.next;
+
+        if (this.count === 1) {
+          this.tail = undefined;
+        } else {
+          this.head.prev = undefined;
+        }
+      } else if (index === this.count - 1) {
+        current = this.tail;
+        this.tail = current.prev;
+        this.tail.next = undefined;
+      } else {
+        current = this.getElementAt(index);
+        const previous = current.prev;
+        // Link previous with current's next - skip it to remove
+        previous.next = current.next;
+        current.next.prev = previous;
+      }
+
+      this.count--;
+      return current.element;
+    }
+
+    return undefined;
   }
 }
