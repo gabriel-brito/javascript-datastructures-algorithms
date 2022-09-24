@@ -5,18 +5,18 @@
  * @return {number}
  */
 var firstUniqChar = function (s) {
-  let result = {};
+  let map = {};
 
   for (let i = 0; i < s.length; i++) {
-    if (!result[s[i]]) {
-      result[s[i]] = 1;
+    if (!map[s[i]]) {
+      map[s[i]] = 1;
     } else {
-      result[s[i]]++;
+      map[s[i]]++;
     }
   }
 
-  for (let key in result) {
-    if (result[key] === 1) {
+  for (let key in map) {
+    if (map[key] === 1) {
       return s.indexOf(key);
     }
   }
