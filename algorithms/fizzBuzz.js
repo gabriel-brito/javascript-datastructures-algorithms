@@ -21,3 +21,4 @@ var fizzBuzz = function (n) {
 
   return result;
 };
+// O(N)

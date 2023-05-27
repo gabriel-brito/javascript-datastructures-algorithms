@@ -23,3 +23,4 @@ var firstUniqChar = function (s) {
 
   return -1;
 };
+// O(N)

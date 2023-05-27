@@ -28,6 +28,7 @@ function removeDuplicates(nums) {
 
   return nums.length;
 }
+// O(N);
 
 // The judge will test your solution with the following code:
 

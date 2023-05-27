@@ -1,4 +1,4 @@
-// O(N)
+// O(N!)
 function factorialRecursive(number) {
   if (number === 2) return 2;
 

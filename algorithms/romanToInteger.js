@@ -20,7 +20,8 @@
   M: 1000,
 };
 
-
+// O (N)
+// O (roman number size);
 var romanToInt = function(s) {
     let result = 0
 

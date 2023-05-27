@@ -1,5 +1,6 @@
 //Google Question
 
+// O(N);
 function firstRecurringCharacter(input) {
   const indexMap = new Map();
   let result = undefined;
